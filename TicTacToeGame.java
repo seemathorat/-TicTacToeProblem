@@ -4,6 +4,7 @@ public class TicTacToeGame {
               public static String PlayerLetter;
 	      public static String ComputerLetter;
               static Scanner sc = new Scanner(System.in);
+              static int count;
 
                   static char[] createBoard() {
 
@@ -58,9 +59,9 @@ public class TicTacToeGame {
         }
         	
         showBoard();
-	}
-
-                   public static void makeComputerMove() {
+	}  
+                 
+                 public static void makeComputerMove() {
 		int cposition = (int)Math.floor(Math.random() * (10-1))+1;
 		
 		if(board[cposition] == 0 ) {
@@ -77,6 +78,23 @@ public class TicTacToeGame {
 		
 		showBoard();
 	}
+                  
+	public static void Toss() {
+		System.out.println("Lets Toss! \nEnter 1 for Heads and 2 for Tails");
+		int opt = sc.nextInt();
+		int toss = (int)Math.floor(Math.random() * 10) %2;
+		
+		if(opt == toss) {
+			System.out.println("Player won the toss! So player starts the game.");
+			count = 0;
+		}
+		else {
+			System.out.println("Computer won the toss! So computer starts the game.");
+			count = 1;
+		}
+		
+	}
+
 	
 
           public static void main(String[] args) {
@@ -89,7 +107,8 @@ public class TicTacToeGame {
                  createBoard();
                  showBoard();
                  makePlayerMove();
-                 makeComputerMove();                  
+                 makeComputerMove();
+                  Toss();                  
 
 }
 }
