@@ -36,6 +36,8 @@ public class TicTacToeGame {
 		}
 		return ComputerLetter;
 	}
+
+
               public static void makePlayerMove(){
 
 	System.out.println("Enter the position you want to move to : "
@@ -57,6 +59,24 @@ public class TicTacToeGame {
         	
         showBoard();
 	}
+
+                   public static void makeComputerMove() {
+		int cposition = (int)Math.floor(Math.random() * (10-1))+1;
+		
+		if(board[cposition] == 0 ) {
+			System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
+			board[cposition] = ComputerLetter.charAt(0);
+		}
+		else if(board[cposition] != 0){
+			cposition = (int)Math.floor(Math.random() * (10-1))+1;
+			if(board[cposition] == 0 ) {
+				System.out.println("Computer will put " + ComputerLetter.charAt(0) + " at position : " + cposition);
+				board[cposition] = ComputerLetter.charAt(0);
+			}
+		}
+		
+		showBoard();
+	}
 	
 
           public static void main(String[] args) {
@@ -64,10 +84,12 @@ public class TicTacToeGame {
                  System.out.println("Please Choose X or O");
 		 String option = sc.next().toUpperCase();
                   choose(option);
-		System.out.println("Player is : " + PlayerLetter);
-		System.out.println("Computer is : " + ComputerLetter);
-                createBoard();
-                showBoard();
+		 System.out.println("Player is : " + PlayerLetter);
+		 System.out.println("Computer is : " + ComputerLetter);
+                 createBoard();
+                 showBoard();
                  makePlayerMove();
+                 makeComputerMove();                  
+
 }
 }
