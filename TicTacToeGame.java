@@ -1,5 +1,10 @@
+import java.util.Scanner; 
 public class TicTacToeGame {
-	public static char[] board;
+	      public static char[] board;
+              public static String PlayerLetter;
+	      public static String ComputerLetter;
+              static Scanner sc = new Scanner(System.in);
+
                   static char[] createBoard() {
 
 		char[] board = new char[10];
@@ -16,9 +21,32 @@ public class TicTacToeGame {
 		System.out.println("----------");
 		System.out.println (board[7] + " | " + board[8] + " | " + board[9]);
 	}
+             public static String choose(String option) {
+		
+		if(option.equals("X")) { 
+			PlayerLetter = "X";
+			ComputerLetter = "O";
+		}
+		else if(option.equals("O")) {
+			ComputerLetter = "X";
+			PlayerLetter = "O";
+		}
+		else {
+			System.out.println("Incorrect Input");
+		}
+		return ComputerLetter;
+	}
+	
+
           public static void main(String[] args) {
                  board = new char[10];
-               createBoard();
-               showBoard();
+                 System.out.println("Please Choose X or O");
+		 String option = sc.next().toUpperCase();
+                  choose(option);
+		System.out.println("Player is : " + PlayerLetter);
+		System.out.println("Computer is : " + ComputerLetter);
+                createBoard();
+                showBoard();
+                 
 }
 }
